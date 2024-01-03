@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Scrum Board</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <div class="scrum-board">
+        <div class="column" id="todo-column">
+            <hr>
+            <h2>To Do</h2>
+            <hr>
+            <input type="text" id="todo-input" placeholder="Add a task">
+            <button onclick="addTask('todo')">Add Task</button>
+            <br><br>
+            <ul id="todo-list" class="task-list" data-status="todo" id="todoid"></ul>
+            <br>
+            <button onclick="moveTasks('todo')" id="button">Move Selected To In Progress</button>
+        </div>
+        <div class="column" id="inprogress-column">
+            <hr>
+            <h2>In Progress</h2>
+            <hr>
+            <ul id="inprogress-list" class="task-list" data-status="inprogress" id="progressid"></ul>
+            <br>
+            <button onclick="moveTasks('inprogress')" id="button">Move Selected To Complete</button>
+        </div>
+        <div class="column" id="completed-column">
+            <hr>
+            <h2>Completed</h2>
+            <hr>
+            <ul id="completed-list" class="task-list" data-status="completed" id="completeid"></ul>
+            <br>
+            <button onclick="moveTasks('completed')" id="button">Move Selected To Closed</button>
+        </div>
+        <div class="column" id="closed-column">
+            <hr>
+            <h2>Closed</h2>
+            <hr>
+            <ul id="closed-list" class="task-list" data-status="closed" id="closedid"></ul>
+            <br>
+            <button type="button" id="button" class="btn1">Remove Selected</button>
+            <button type="button" id="button" class="btn2">Remove All </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
