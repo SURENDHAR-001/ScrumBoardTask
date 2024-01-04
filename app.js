@@ -25,6 +25,11 @@ $(document).ready(function () {
         }
     }
 
+    $(".btnr").click(function removeSelectedTasks(status) {
+        $('#todo-list .selected').remove();
+        saveTasksForStatus('todo');
+    })
+
     // Function to move selected tasks to the next column
     function moveTasks(currentStatus) {
         var selectedTasks = $('#' + currentStatus + '-list .selected');
@@ -76,18 +81,6 @@ $(document).ready(function () {
     function saveTasksForStatus(status) {
         var taskList = $('#' + status + '-list').html();
         localStorage.setItem('scrumBoardTasks-' + status, taskList);
-    }
-
-    function removeSelectedClosedTasks() {
-        $('#closed-list .selected').remove();
-        saveTasksForStatus('closed');
-    }
-
-    // Function to remove all tasks in the "Closed" column
-    function removeAllClosedTasks() {
-        console.log('removed');
-        $('#closed-list').empty();
-        saveTasksForStatus('closed');
     }
 
     $(".btn1").click(function(){

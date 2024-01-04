@@ -19,10 +19,11 @@
         <div class="logo">Welcome To Sample Scrum Board</div>
         <ul class="nav-list">
             <li><a href="#"><i class="fa-solid fa-house"></i>Home</a></li>
-            <li><a href="#"><i class="fas fa-info-circle"></i>About</a></li>
             <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
             <li><a href="#"><i class="fas fa-envelope"></i>Contact</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i>About</a></li>
             <li><i class="fas fa-user"></i></li>
+
         </ul>
     </nav>
 
@@ -36,6 +37,8 @@
             <br><br>
             <ul id="todo-list" class="task-list" data-status="todo" id="todoid"></ul>
             <br>
+            <button type="button" id="button" class="btnr" style="width: 150px;height: 30px;">Remove Selected</button>
+            <br><br>
             <button onclick="moveTasks('todo')" id="button">Move Selected To In Progress</button>
         </div>
         <div class="column" id="inprogress-column">
