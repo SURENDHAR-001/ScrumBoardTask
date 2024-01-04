@@ -9,6 +9,10 @@
     <title>Scrum Board</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="app.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     
 </head>
 
@@ -66,15 +70,17 @@
             <button type="button" id="button" class="btn1">Remove Selected</button>
             <button type="button" id="button" class="btn2">Remove All </button>
         </div>
+       
     </div>
 
-
+    <!-- <button class="btn-clear-localstorage"  id="button">clear local storage</button> -->
     <script>
         function handleKeyPress(event, status) {
             if (event.key === "Enter") {
                 addTask(status);
             }
         }
+        
     </script>
 
 </body>

@@ -2,13 +2,50 @@ $(document).ready(function () {
     // Initialize Scrum board with saved task lists
     renderTasks();
 
-
-    // Function to remove all tasks in the "Closed" column
-
     // Click event for moving tasks between columns
     $('.task-list').on('click', '.task', function () {
         $(this).toggleClass('selected');
     });
+
+     // Function to clear local storage
+     function clearLocalStorage() {
+        localStorage.clear();
+        // After clearing local storage, you may want to re-render the tasks
+        renderTasks();
+    }
+
+    $(".btn-clear-localstorage").click(function () {
+        clearLocalStorage();
+    });
+
+
+    // Make tasks draggable
+    $('.task-list').on('mouseenter', '.task', function () {
+        $(this).draggable({
+            helper: 'original',
+            cursor: 'move',
+            revert: 'invalid',
+        });
+    });
+
+    // Make columns droppable
+    $('.column').droppable({
+        accept: '.task-list .task',
+        drop: function (event, ui) {
+            var droppedTask = ui.helper.clone();
+            var originalTask = ui.helper;
+
+            if ($(this).find('.task-list').data('status') !== originalTask.parent().data('status')) {
+                // Append the cloned task to the new column
+                $(this).find('.task-list').append(droppedTask);
+
+                // Remove the original task from its previous location
+                originalTask.remove();
+
+            }
+        },
+    });
+
 
 
     // Function to add a task
@@ -26,8 +63,11 @@ $(document).ready(function () {
     }
 
     $(".btnr").click(function removeSelectedTasks(status) {
+        var confirmDelete = confirm("Are you sure you want to remove the selected tasks?");
+            if (confirmDelete) {
         $('#todo-list .selected').remove();
         saveTasksForStatus('todo');
+            }
     })
 
     // Function to move selected tasks to the next column
@@ -55,8 +95,6 @@ $(document).ready(function () {
             saveTasksForStatus(nextStatus);
         }
     }
-
-    // Function to remove all tasks in the "Closed" column
 
 
     // Function to render task list from localStorage for a specific status
