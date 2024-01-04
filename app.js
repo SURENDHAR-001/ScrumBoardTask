@@ -19,32 +19,34 @@ $(document).ready(function () {
     });
 
 
-    // Make tasks draggable
-    $('.task-list').on('mouseenter', '.task', function () {
-        $(this).draggable({
-            helper: 'original',
-            cursor: 'move',
-            revert: 'invalid',
-        });
-    });
+    // // Make tasks draggable
+    // $('.task-list').on('mouseenter', '.task', function () {
+    //     $(this).draggable({
+    //         helper: 'original',
+    //         cursor: 'move',
+    //         revert: 'invalid',
+    //     });
+    // });
 
-    // Make columns droppable
-    $('.column').droppable({
-        accept: '.task-list .task',
-        drop: function (event, ui) {
-            var droppedTask = ui.helper.clone();
-            var originalTask = ui.helper;
+    // // Make columns droppable
+    // $('.column').droppable({
+    //     accept: '.task-list .task',
+    //     drop: function (event, ui) {
+    //         var droppedTask = ui.helper.clone();
+    //         var originalTask = ui.helper;
 
-            if ($(this).find('.task-list').data('status') !== originalTask.parent().data('status')) {
-                // Append the cloned task to the new column
-                $(this).find('.task-list').append(droppedTask);
+    //         if ($(this).find('.task-list').data('status') !== originalTask.parent().data('status')) {
+    //             // Append the cloned task to the new column
+    //             $(this).find('.task-list').append(droppedTask);
 
-                // Remove the original task from its previous location
-                originalTask.remove();
+    //             // Remove the original task from its previous location
+    //             originalTask.remove();
 
-            }
-        },
-    });
+    //             saveTasksForStatus($(this).find('.task-list').data('status'));
+
+    //         }
+    //     },
+    // });
 
 
 
